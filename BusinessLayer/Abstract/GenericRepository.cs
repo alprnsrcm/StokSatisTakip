@@ -44,5 +44,9 @@ namespace BusinessLayer.Abstract
 			db.Entry<T>(p).State = EntityState.Modified;
 			db.SaveChanges();
 		}
+		public List<T> TList(string p)
+		{
+			return db.Set<T>().Include(p).ToList();
+		}
 	}
 }

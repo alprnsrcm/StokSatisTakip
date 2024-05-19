@@ -11,7 +11,7 @@ namespace EntityLayer.Entities
 	public class Product
 	{
 		[Key]
-		public int UrunId { get; set; }
+		public int Id { get; set; }
 		[Required(ErrorMessage = "Boş Geçilemez")]
 		[Display(Name = "Ad")]
 		[StringLength(50, ErrorMessage = "Max 50 karakter olmalıdır.")]
@@ -35,9 +35,6 @@ namespace EntityLayer.Entities
 		[Required(ErrorMessage = "Boş Geçilemez")]
 		[Display(Name = "Resim")]
 		public string Image { get; set; }
-		[Required(ErrorMessage = "Boş Geçilemez")]
-		[Display(Name = "Adet")]
-		public string Quantity { get; set; }
 		[Required(ErrorMessage = "Boş Geçilemez")]
 		[Display(Name = "Kategori")]
 		public int CategoryId { get; set; }

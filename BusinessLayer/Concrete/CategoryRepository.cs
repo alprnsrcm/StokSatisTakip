@@ -10,6 +10,5 @@ namespace BusinessLayer.Concrete
 {
 	public class CategoryRepository:GenericRepository<Category>
 	{
-
 	}
 }
