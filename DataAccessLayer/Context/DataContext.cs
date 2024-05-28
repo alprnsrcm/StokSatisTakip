@@ -18,7 +18,7 @@ namespace DataAccessLayer.Context
         {
             optionsBuilder.UseSqlServer("server=DESKTOP-G1CLG7U\\SQLEXPRESS;database=StokSatisTakipDb; integrated security=true;TrustServerCertificate=true;");
         }
-
+        
 
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Product> Products { get; set; }

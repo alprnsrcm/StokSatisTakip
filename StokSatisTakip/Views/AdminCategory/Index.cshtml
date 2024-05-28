@@ -3,6 +3,11 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+
 <br />
 <br />
 <a class="btn btn-primary" href="/AdminCategory/Create">Kategori Ekle</a>
@@ -20,8 +25,43 @@
         <tr>
             <td>@item.Name</td>
             <td>@item.Description</td>
-            <td>@Html.ActionLink("Sil","Delete",new {@item.Id},new {@class="btn btn-danger",onclick="return confirm('Silmek istiyor musunuz?')"})</td>
+            <td>
+                <a href="javascript:void(0);" class="btn btn-danger" onclick="showCustomConfirm('@item.Id')">Sil</a>
+            </td>
+
             <td><a class="btn btn-primary" href="/AdminCategory/Update/@item.Id">Güncelle</a></td>
         </tr>
     }
 </table>
+<!-- Custom modal -->
+<div class="modal fade" id="customConfirmModal" tabindex="-1" role="dialog" aria-labelledby="customConfirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="customConfirmModalLabel">Onay</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Silmek istiyor musunuz?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hayır</button>
+        <button type="button" class="btn btn-danger" id="confirmDelete">Evet</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showCustomConfirm(id) {
+    $('#confirmDelete').data('id', id); // Store the id in the confirm button
+    $('#customConfirmModal').modal('show'); // Show the modal
+  }
+
+  $('#confirmDelete').click(function() {
+    var id = $(this).data('id');
+    window.location.href = '/AdminCategory/Delete/' + id; // Redirect to delete action
+  });
+</script>

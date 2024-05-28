@@ -1,14 +1,17 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Context;
 using EntityLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using StokSatisTakip.Models;
+using System.Data;
 using System.Web;
 using X.PagedList;
 
 namespace StokSatisTakip.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminProductController : Controller
     {
         ProductRepository productRepository = new ProductRepository();

@@ -1,9 +1,11 @@
 ﻿using BusinessLayer.Concrete;
 using EntityLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StokSatisTakip.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class AdminCategory : Controller
     {
         CategoryRepository categoryRepository = new CategoryRepository();

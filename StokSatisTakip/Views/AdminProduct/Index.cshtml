@@ -50,7 +50,7 @@
 					<label class="btn btn-danger">Hayır</label>
 				}
 			</td>
-			<td><img src="~/wwwroot/Image/@item.Image" width="40" height="40"/>Resim</td>
+			<td><img src="~/Image/@item.Image" width="40" height="40"/>Resim</td>
 			<td>@item.Category.Name</td>
 			<td>@Html.ActionLink("Sil","Delete",new {@item.Id},new {@class="btn btn-danger",onclick="return confirm('Silmek istiyor musunuz?')"})</td>
 			<td><a class="btn btn-primary" href="/AdminProduct/Update/@item.Id">Güncelle</a></td>

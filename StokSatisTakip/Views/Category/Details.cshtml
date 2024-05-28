@@ -1,11 +1,7 @@
-﻿@using X.PagedList;
-@using X.PagedList.Mvc.Core;
-@model IPagedList<EntityLayer.Entities.Product>
-
-
+﻿@model List<EntityLayer.Entities.Product>
 @{
-	ViewData["Title"] = "Index";
-	Layout = "~/Views/Shared/Layout.cshtml";
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <section id="slider">
@@ -106,8 +102,7 @@
 						</div>
 					}
 					<br />
-					<br />
-					@Html.PagedListPager(Model, sayfa => Url.Action("Index", new { sayfa }), PagedListRenderOptions.Classic)
+					
 
 
 
@@ -119,5 +114,4 @@
 		</div>
 	</div>
 </section>
-
 
