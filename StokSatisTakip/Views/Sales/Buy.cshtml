@@ -1,0 +1,53 @@
+﻿@model EntityLayer.Entities.Cart
+@{
+	ViewData["Title"] = "Buy";
+	Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-10">
+			<div class="card shadow-lg">
+				<div class="card-header bg-primary text-white d-flex justify-content-between">
+					<h2 class="mb-0 text-start">Merhaba @User.Identity.Name Satın Alma Sayfasına Hoşgeldiniz.</h2>
+				</div>
+				<br />
+				<div class="card-body">
+					@using (Html.BeginForm("Buy2", "Sales", FormMethod.Post))
+					{
+						@Html.HiddenFor(x => x.Id)
+						<table class="table table-bordered table-striped">
+							<thead class="thead-light">
+								<tr>
+									<th class="text-center">Ürün Bilgisi</th>
+									<th class="text-center">Adet</th>
+									<th class="text-center">Ürün Resmi</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="text-center align-middle">@Model.Product.Name</td>
+									<td class="text-center align-middle">@Model.Quantity</td>
+									<td class="text-center align-middle">
+										<img src="~/Image/@Model.Product.Image" class="img-thumbnail rounded-circle shadow-sm" width="100" height="100" />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<div class="d-flex justify-content-end align-items-center mb-4">
+							<div class="text-end" style="font-size: 1.5rem; color: red;">
+								<label>Fiyat: @Model.Price</label>
+							</div>
+						</div>
+
+						<div class="d-flex justify-content-end">
+							<button type="submit" class="btn btn-success btn-lg me-3 shadow-sm">Satın Al</button>
+							<a href="/Cart/Index" class="btn btn-danger btn-lg shadow-sm">İptal</a>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

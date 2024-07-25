@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Login | E-Shopper</title>
+    <title>Login | StokSatisTakip</title>
     <link href="~/eshop/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/eshop/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/eshop/css/prettyPhoto.css" rel="stylesheet">
@@ -30,9 +30,7 @@
 
 <body>
 
-    <p style="color:red; text-align:center">@ViewBag.Hata</p>
-
-
+    <p style="color:red; text-align:center">@ViewBag.ErrorMessage</p>
 
     <section id="form">
         <!--form-->
@@ -43,8 +41,7 @@
                         <!--login form-->
                         <h2>Sisteme Giriş Yapınız.</h2>
                         <form action="/Account/Login" method="post">
-
-                            <input type="text" placeholder="Kullanıcı Adınız" name="Email" />
+                            <input type="text" placeholder="E-Mail Adresiniz" name="Email" />
                             <input type="password" placeholder="Şifreniz" name="Password" />
                             <span>
                                 <input type="checkbox" class="checkbox" name="RememberMe" value="true">
@@ -58,7 +55,7 @@
                     <h2 class="or">OR</h2>
                 </div>
                 <div class="col-sm-4">
-                    <p style="color:forestgreen; text-align:center">@ViewBag.register</p>
+                    <p style="color:forestgreen; text-align:center">@ViewBag.RegisterMessage</p>
                     <div class="signup-form">
                         <!--sign up form-->
                         <h2>Hesabınız Yoksa Kayıt Olunuz.</h2>
@@ -76,9 +73,6 @@
             </div>
         </div>
     </section><!--/form-->
-
-
-
 
     <script src="~/eshop/js/jquery.js"></script>
     <script src="~/eshop/js/price-range.js"></script>

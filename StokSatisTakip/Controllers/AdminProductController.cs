@@ -19,7 +19,7 @@ namespace StokSatisTakip.Controllers
         public IActionResult Index(int sayfa=1)
         {
 
-            return View(productRepository.TList("Category").ToPagedList(sayfa,3));
+            return View(productRepository.TList("Category").ToPagedList(sayfa,10));
         }
         public IActionResult Create()
         {
@@ -109,6 +109,14 @@ namespace StokSatisTakip.Controllers
                 productRepository.Update(update);
                 return RedirectToAction("Index");
             }
+
         }
+        public ActionResult CriticalStock()
+        {
+            var kritik = database.Products.Where(x => x.Stock <= 50).ToList();
+
+            return View(kritik);
+        }
+        
     }
 }

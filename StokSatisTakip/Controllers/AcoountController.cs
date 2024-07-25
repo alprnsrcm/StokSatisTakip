@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.Context;
+﻿using BusinessLayer.Helpers;
+using DataAccessLayer.Context;
 using EntityLayer.Entities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -30,17 +31,17 @@ namespace StokSatisTakip.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(User data, bool RememberMe)
         {
-            var bilgiler = await _context.Users
-                .FirstOrDefaultAsync(x => x.Email == data.Email && x.Password == data.Password);
+            var user = await _context.Users
+                .FirstOrDefaultAsync(x => x.Email == data.Email);
 
-            if (bilgiler != null)
+            if (user != null && HashingHelper.VerifyPassword(data.Password, user.Password))
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.NameIdentifier, bilgiler.Id.ToString()),
-                    new Claim(ClaimTypes.Email, bilgiler.Email),
-                    new Claim(ClaimTypes.Name, bilgiler.Name),
-                    new Claim(ClaimTypes.Role, bilgiler.Role)
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Name, user.Name),
+                    new Claim(ClaimTypes.Role, user.Role)
                 };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -53,7 +54,7 @@ namespace StokSatisTakip.Controllers
 
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
 
-                if (bilgiler.Role == "Admin")
+                if (user.Role == "Admin")
                 {
                     return RedirectToAction("Index", "Main", new { Area = "Admin" });
                 }
@@ -63,20 +64,34 @@ namespace StokSatisTakip.Controllers
                 }
             }
 
-            ViewBag.ErrorMessage = "Geçersiz kullanıcı adı veya şifre.";
+            ViewBag.ErrorMessage = "Geçersiz e-mail veya şifre.";
             return View(data);
         }
 
         [HttpPost]
         public async Task<IActionResult> Register(User data)
         {
+            if (_context.Users.Any(x => x.Email == data.Email))
+            {
+                ViewBag.ErrorMessage = "Bu e-posta adresiyle kayıtlı bir kullanıcı zaten mevcut.";
+                return View("Login");
+            }
+
+            if (data.Password != data.RePassword)
+            {
+                ViewBag.ErrorMessage = "Şifreler uyuşmuyor.";
+                return View("Login");
+            }
+
             data.Role = "User";
+            data.Password = HashingHelper.HashPassword(data.Password);
+            data.RePassword = HashingHelper.HashPassword(data.RePassword);
 
             _context.Users.Add(data);
             await _context.SaveChangesAsync();
 
-            ViewBag.register = "Kayıt işlemi başarılı, giriş yapabilirsiniz.";
-            return RedirectToAction("Login");
+            ViewBag.RegisterMessage = "Kayıt işlemi başarılı, giriş yapabilirsiniz.";
+            return View("Login");
         }
 
         [Authorize]

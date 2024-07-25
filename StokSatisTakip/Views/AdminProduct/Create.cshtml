@@ -32,13 +32,13 @@
                 <br />
                 <div class="form-group">
                     <label>Fiyat</label>
-                    <input type="text" class="form-control" name="Price" />
+                    <input type="number" class="form-control" name="Price" />
                     @Html.ValidationMessageFor(x => x.Price ,"",new{@style="color:red"})
                 </div>
                 <br />
                 <div class="form-group">
                     <label>Stok</label>
-                    <input type="text" class="form-control" name="Stock" />
+                    <input type="number" class="form-control" name="Stock" />
                     @Html.ValidationMessageFor(x => x.Stock ,"",new{@style="color:red"})
                 </div>
                 <br />

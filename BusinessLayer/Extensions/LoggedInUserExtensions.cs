@@ -9,9 +9,9 @@ namespace BusinessLayer.Extensions
 {
     public static class LoggedInUserExtensions
     {
-        public static Guid GetLoggedInUserId(this ClaimsPrincipal principal)
+        public static int GetLoggedInUserId(this ClaimsPrincipal principal)
         {
-            return Guid.Parse(principal.FindFirstValue(ClaimTypes.NameIdentifier));
+            return int.Parse(principal.FindFirstValue(ClaimTypes.NameIdentifier));
         }
         public static string GetLoggedInEmail(this ClaimsPrincipal principal)
         {

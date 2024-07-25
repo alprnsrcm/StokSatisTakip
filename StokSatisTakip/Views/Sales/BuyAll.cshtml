@@ -1,0 +1,55 @@
+﻿@model List<EntityLayer.Entities.Cart>
+@{
+    ViewData["Title"] = "BuyAll";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white d-flex justify-content-between">
+                    <h2 class="mb-0 text-start">Merhaba @User.Identity.Name Satın Alma Sayfasına Hoşgeldiniz.</h2>
+                </div>
+                <br />
+                <div class="card-body">
+                    @using (Html.BeginForm("BuyAll2", "Sales", FormMethod.Post, new { @class = "container" }))
+                    {
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-center">Ürün Ad</th>
+                                    <th scope="col" class="text-center">Adet</th>
+                                    <th scope="col" class="text-center">Resim</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            @Html.DisplayFor(x => item.Product.Name, new { @class = "form-control-plaintext" })
+                                        </td>
+                                        <td class="text-center">
+                                            @Html.DisplayFor(x => item.Quantity, new { @class = "form-control-plaintext" })
+                                        </td>
+                                        <td class="text-center">
+                                            <img src="~/Image/@item.Product.Image" class="img-thumbnail rounded-circle shadow-sm mx-auto" width="100" height="100" />
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="d-flex justify-content-center align-items-center mb-4">
+                            <p class="text-end" style="font-size: 1.5rem; color: red;">@ViewBag.Tutar</p>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-success btn-lg me-3 shadow-sm">Onay</button>
+                            <a href="/Cart/Index" class="btn btn-danger btn-lg shadow-sm">İptal</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

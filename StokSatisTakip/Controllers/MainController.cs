@@ -7,7 +7,7 @@ using X.PagedList;
 
 namespace StokSatisTakip.Controllers
 {
-    [Authorize]
+    
     public class MainController : Controller
     {
         ProductRepository productRepository = new ProductRepository();
@@ -15,7 +15,7 @@ namespace StokSatisTakip.Controllers
         public IActionResult Index(int sayfa=1)
         {
 			ViewBag.Categories = categoryRepository;
-			return View(productRepository.List().ToPagedList(sayfa,3));
+			return View(productRepository.List().ToPagedList(sayfa,6));
         }
 		public IActionResult CategoryList()
         {

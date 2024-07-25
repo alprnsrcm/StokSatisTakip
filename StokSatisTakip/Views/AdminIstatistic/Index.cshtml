@@ -1,0 +1,88 @@
+﻿@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Metro Panel Flat Bootstarp Resposive Website Template| Home :: w3layouts</title>
+	<link href="css/bootstrap.css" rel="stylesheet" type='text/css' />
+	<!-- Custom Theme files -->
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- Custom Theme files -->
+	<script src="js/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<!-- Custom Theme files -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Metro Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!--webfont-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+	<div class="total-content">
+		<div class="list_of_members">
+			<div class="col-md-3">
+				<div class="sales" style="background-color:#1abc9c">
+					<div class="icon-text">
+						<h3 style="color:white">@ViewBag.satis</h3>
+						<p style="color:white">Toplam Satışlar</p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="new-users" style="background-color:#2ecc71">
+				<div class="icon-text">
+					<h3 style="color:white">@ViewBag.urun</h3>
+					<p style="color:white">Ürün Sayısı</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="orders" style="background-color:#3498db">
+				<div class="icon-text">
+					<h3 style="color:white">@ViewBag.kategori</h3>
+					<p style="color:white">Kategori Sayısı</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="visitors" style="background-color:#9b59b6">
+				<div class="icon-text">
+					<h3 style="color:white">@ViewBag.sepet</h3>
+					<p style="color:white">Sepet Sayısı</p>
+
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="visitors" style="background-color:#ff6a00; margin-top:10px">
+				<div class="icon-text">
+					<h3 style="color:white">@ViewBag.kullanici</h3>
+					<p style="color:white">Kullanıcı Sayısı</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</body>
+</html>

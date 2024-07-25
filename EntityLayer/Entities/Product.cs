@@ -39,5 +39,7 @@ namespace EntityLayer.Entities
 		[Display(Name = "Kategori")]
 		public int CategoryId { get; set; }
 		public Category Category { get; set; }
+		public List<Cart> Carts { get; set; }
+		public List<Sales> Sales { get; set; }
 	}
 }

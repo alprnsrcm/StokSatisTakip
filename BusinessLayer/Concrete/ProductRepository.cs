@@ -16,11 +16,8 @@ namespace BusinessLayer.Concrete
         {
             return db.Products.ToList();
         }
-        //public List<Product> GetPopularProduct()
-        //{
-        //    return db.Products.Where(x => x.Popular == true).Take(3).ToList();
-        //}
-		public List<Product> GetPopularProduct(int count = 3)
+       
+		public List<Product> GetPopularProduct(int count = 6)
 		{
 			return db.Products.Where(x => x.Popular == true).Take(count).ToList();
 		}

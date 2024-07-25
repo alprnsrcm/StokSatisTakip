@@ -30,12 +30,12 @@ namespace EntityLayer.Entities
 		public string UserName { get; set; }
 		[Required(ErrorMessage = "Boş Geçilemez")]
 		[Display(Name = "Şifre")]
-		[StringLength(10, ErrorMessage = "Max 10 karakter olmalıdır.")]
+		[StringLength(100, ErrorMessage = "Max 10 karakter olmalıdır.")]
 		[DataType(DataType.Password)]
 		public string Password { get; set; }
 		[Required(ErrorMessage = "Boş Geçilemez")]
 		[Display(Name = "Şifre")]
-		[StringLength(10, ErrorMessage = "Max 10 karakter olmalıdır.")]
+		[StringLength(100, ErrorMessage = "Max 10 karakter olmalıdır.")]
 		[DataType(DataType.Password)]
 		[Compare("Password",ErrorMessage ="Şifreler Uyuşmuyor")]
 		public string RePassword { get; set; }
